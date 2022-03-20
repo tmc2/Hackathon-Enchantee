@@ -23,6 +23,14 @@ public class VoiceBotScript : MonoBehaviour
     [SerializeField]
     private TMP_Text user_options_text;
 
+    // Audios
+    [SerializeField]
+    private AudioSource super_audio;
+
+    [SerializeField]
+    private AudioSource repeat_audio;
+
+
     private List<string> bot_sentences = new List<string>
             { "Bonjour Maria !\nComment vas-tu ?",
               "Super ! Tu vas bien !\nTu connais Paris ?",
@@ -57,6 +65,9 @@ public class VoiceBotScript : MonoBehaviour
             // Add it to the scrolling panel
             bot_text_panel.transform.SetParent(panel.transform, false);
 
+            // Play the corresponding audio  
+            super_audio.Play();
+
             // change the user options
             user_options_text.text = options_list[microphone_counter + 1];
 
@@ -72,6 +83,9 @@ public class VoiceBotScript : MonoBehaviour
 
             // Add it to the scrolling panel
             bot_text_panel.transform.SetParent(panel.transform, false);
+
+            // Play de corresponding audio
+            repeat_audio.Play();
 
             microphone_counter++;
         }
